@@ -2,7 +2,7 @@
 
 *"That is not dead which can eternal lie, and with strange aeons even debt may die."*  
 A grimoire for the modern age, designed to let one peer into the chaotic abyss of personal finance. Necronomics allows the initiated to track, categorize, and control the eldritch flows of income and expenditure, lest they be consumed by the madness of debt.  
-[**Behold the Live Apparition**](https://your-app-url.com) *(The portal will open in a future incantation)*
+[**Behold the Live Apparition**](https://es.wikipedia.org/wiki/Felis_catus) *(The portal will open in a future incantation)*
 
 ## **The Scrying Mirror**
 
