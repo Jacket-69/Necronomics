@@ -39,7 +39,7 @@ The incantations that power this grimoire are woven from forbidden technologies:
 
 The path to enlightenment is foretold:
 
-* \[ \] **Chapter I:** The Foundation & Initial Summoning  
+* \[x\] **Chapter I:** The Foundation & Initial Summoning  
 * \[ \] **Chapter II:** The Keeper's Gate (User Authentication)  
 * \[ \] **Chapter III:** The Scribe's Duty (Transaction Management)  
 * \[ \] **Chapter IV:** The Oracle's Vision (Dashboard & Charts)  
