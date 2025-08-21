@@ -1,7 +1,11 @@
-// This file defines the shape of the data for a login request.
-// It's a good practice to have separate DTOs for different actions.
+import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 
 export class LoginDto {
+  @IsEmail()
+  @IsNotEmpty()
   email: string;
+
+  @IsString()
+  @IsNotEmpty()
   password: string;
 }
