@@ -2,7 +2,7 @@
 
 *"That is not dead which can eternal lie, and with strange aeons even debt may die."*  
 A grimoire for the modern age, designed to let one peer into the chaotic abyss of personal finance. Necronomics allows the initiated to track, categorize, and control the eldritch flows of income and expenditure, lest they be consumed by the madness of debt.  
-[**Behold the Live Apparition**](https://es.wikipedia.org/wiki/Felis_catus) *(The portal will open in a future incantation)*
+[**Behold the Live Apparition**](https://your-app-url.com) *(The portal will open in a future incantation)*
 
 ## **The Scrying Mirror**
 
@@ -12,6 +12,7 @@ A grimoire for the modern age, designed to let one peer into the chaotic abyss o
 
 The incantations that power this grimoire are woven from forbidden technologies:  
 **The Client (The Visage):**
+
 * React  
 * TypeScript  
 * Vite  
@@ -19,11 +20,13 @@ The incantations that power this grimoire are woven from forbidden technologies:
 * Recharts
 
 **The Server (The Nexus):**
+
 * NestJS  
 * Node.js  
 * TypeScript
 
 **The Vault (The Reliquary):**
+
 * PostgreSQL  
 * Prisma (ORM)
 
@@ -40,8 +43,8 @@ The incantations that power this grimoire are woven from forbidden technologies:
 The path to enlightenment is foretold:
 
 * \[x\] **Chapter I:** The Foundation & Initial Summoning  
-* \[ \] **Chapter II:** The Keeper's Gate (User Authentication)  
-* \[ \] **Chapter III:** The Scribe's Duty (Transaction Management)  
+* \[x\] **Chapter II:** The Keeper's Gate (User Authentication)  
+* \[x\] **Chapter III:** The Scribe's Duty (Transaction Management)  
 * \[ \] **Chapter IV:** The Oracle's Vision (Dashboard & Charts)  
 * \[ \] **Chapter V:** The Naming of Parts (Categorization)
 
@@ -57,8 +60,8 @@ To conjure your own instance of Necronomics, follow these arcane steps:
 
 3. **Install the required reagents for both client and server:**  
    \# From the root directory  
-   cd client && pnpm install  
-   cd ../server && pnpm install
+   cd client && npm install  
+   cd ../server && npm install
 
 4. **Prepare the sacrificial .env file:**  
    * In the server directory, create a file named .env.  
@@ -66,11 +69,11 @@ To conjure your own instance of Necronomics, follow these arcane steps:
    * You may copy the example scroll: cp .env.example .env (We will create this file later).  
 5. **Awaken the Server:**  
    \# In the /server directory  
-   pnpm run start:dev
+   npm run start:dev
 
 6. **Reveal the Client:**  
    \# In the /client directory  
-   pnpm run dev
+   npm run dev
 
 ## **The Pact (License)**
 
