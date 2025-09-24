@@ -66,4 +66,45 @@ export class TransactionsService {
       },
     });
   }
+
+  async getSummary(userId: string, startDate: Date, endDate: Date) {
+    const totalIncomeResult = await this.prisma.transaction.aggregate({
+      where: {
+        userId: userId,
+        type: 'INCOME',
+        date: {
+          gte: startDate, // gte = Greater Than or Equal to
+          lte: endDate, // lte = Less Than or Equal to
+        },
+      },
+      _sum: {
+        amount: true,
+      },
+    });
+
+    const totalExpensesResult = await this.prisma.transaction.aggregate({
+      where: {
+        userId: userId,
+        type: 'EXPENSE',
+        date: {
+          gte: startDate,
+          lte: endDate,
+        },
+      },
+      _sum: {
+        amount: true,
+      },
+    });
+
+    const totalIncome = totalIncomeResult._sum.amount || 0;
+    const totalExpenses = totalExpensesResult._sum.amount || 0;
+    const balance = totalIncome - totalExpenses;
+
+    return {
+      totalIncome,
+      totalExpenses,
+      balance,
+    };
+  }
+
 }

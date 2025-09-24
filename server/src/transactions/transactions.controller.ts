@@ -1,8 +1,9 @@
-import { Controller, Post, Body, UseGuards, Req, Get, Param, Patch, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Req, Query } from '@nestjs/common';
 import { TransactionsService } from './transactions.service';
 import { CreateTransactionDto } from './dto/create-transaction.dto';
 import { UpdateTransactionDto } from './dto/update-transaction.dto';
 import { JwtAuthGuard } from 'src/auth/jwt/jwt.guard';
+import { GetSummaryDto } from './dto/get-summary.dto';
 import type { Request } from 'express';
 
 declare module 'express' {
@@ -18,6 +19,16 @@ declare module 'express' {
 @Controller('transactions')
 export class TransactionsController {
   constructor(private readonly transactionsService: TransactionsService) {}
+
+  @Get('summary')
+  getSummary(@Req() req: Request, @Query() getSummaryDto: GetSummaryDto) {
+    const userId = req.user!.sub;
+    // Convert string dates from DTO to Date objects for the service
+    const startDate = new Date(getSummaryDto.startDate);
+    const endDate = new Date(getSummaryDto.endDate);
+
+    return this.transactionsService.getSummary(userId, startDate, endDate);
+  }
 
   @Post()
   create(@Body() createTransactionDto: CreateTransactionDto, @Req() req: Request) {
@@ -56,4 +67,6 @@ export class TransactionsController {
     const userId = req.user!.sub;
     return this.transactionsService.remove(transactionId, userId);
   }
+
+
 }
