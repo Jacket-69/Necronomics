@@ -2,6 +2,7 @@ import { ForbiddenException, Injectable } from '@nestjs/common';
 import { CreateTransactionDto } from './dto/create-transaction.dto';
 import { UpdateTransactionDto } from './dto/update-transaction.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class TransactionsService {
@@ -105,6 +106,33 @@ export class TransactionsService {
       totalExpenses,
       balance,
     };
+  }
+
+  async getDailySummary(userId: string, startDate: Date, endDate: Date) {
+    // This is a raw SQL query executed through Prisma for high performance.
+    // It groups transactions by calendar day and calculates the sum for each day.
+    const result = await this.prisma.$queryRaw<
+      { date: Date; total: number; type: 'INCOME' | 'EXPENSE' }[]
+    >(
+      Prisma.sql`
+        SELECT
+          DATE_TRUNC('day', "date")::DATE as date,
+          "type",
+          SUM("amount") as total
+        FROM "Transaction"
+        WHERE "userId" = ${userId}
+          AND "date" >= ${startDate}
+          AND "date" <= ${endDate}
+        GROUP BY DATE_TRUNC('day', "date"), "type"
+        ORDER BY date ASC;
+      `,
+    );
+
+    // The raw query returns BigInt for sums, so we convert it to Number.
+    return result.map((r) => ({
+      ...r,
+      total: Number(r.total),
+    }));
   }
 
 }

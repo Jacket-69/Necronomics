@@ -30,6 +30,15 @@ export class TransactionsController {
     return this.transactionsService.getSummary(userId, startDate, endDate);
   }
 
+  @Get('daily-summary')
+  getDailySummary(@Req() req: Request, @Query() getSummaryDto: GetSummaryDto) {
+    const userId = req.user!.sub;
+    const startDate = new Date(getSummaryDto.startDate);
+    const endDate = new Date(getSummaryDto.endDate);
+
+    return this.transactionsService.getDailySummary(userId, startDate, endDate);
+  }
+
   @Post()
   create(@Body() createTransactionDto: CreateTransactionDto, @Req() req: Request) {
     const userId = req.user!.sub;
