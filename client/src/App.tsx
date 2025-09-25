@@ -1,10 +1,26 @@
+// src/App.tsx
+import { AuthProvider, useAuth } from './context/AuthContext';
+import AuthPage from './pages/AuthPage';
+import DashboardPage from './pages/DashboardPage';
+
+// This component will decide which page to show
+const AppRouter = () => {
+  const { isAuthenticated } = useAuth();
+
+  return (
+    <div className="bg-gray-900 text-cyan-400 min-h-screen">
+      {isAuthenticated ? <DashboardPage /> : <AuthPage />}
+    </div>
+  );
+};
+
+// The main App component wraps everything in the AuthProvider
 function App() {
   return (
-    <div className="bg-gray-900 text-cyan-400 min-h-screen flex flex-col items-center justify-center">
-      <h1 className="text-5xl font-bold font-mono">Necronomics</h1>
-      <p className="text-gray-400 mt-2">The abyss of finance awaits...</p>
-    </div>
-  )
+    <AuthProvider>
+      <AppRouter />
+    </AuthProvider>
+  );
 }
 
-export default App
+export default App;
