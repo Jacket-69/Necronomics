@@ -2,5 +2,7 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 fn main() {
+    // Force X11 backend to avoid Wayland protocol errors with webkit2gtk
+    std::env::set_var("GDK_BACKEND", "x11");
     necronomics_lib::run()
 }
