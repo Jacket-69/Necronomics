@@ -11,24 +11,24 @@
     "lint": "eslint src/"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.2.1",
-    "@tauri-apps/api": "^2",
-    "@tauri-apps/plugin-opener": "^2",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "tailwindcss": "^4.2.1"
+    "@tailwindcss/vite": "4.1.8",
+    "@tauri-apps/api": "2.10.1",
+    "@tauri-apps/plugin-opener": "2.5.3",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "tailwindcss": "4.1.8"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@tauri-apps/cli": "^2",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "@vitejs/plugin-react": "^4.6.0",
-    "eslint": "^10.0.2",
-    "eslint-config-prettier": "^10.1.8",
-    "prettier": "^3.8.1",
-    "typescript": "~5.8.3",
-    "typescript-eslint": "^8.56.1",
-    "vite": "^7.0.4"
+    "@eslint/js": "9.28.0",
+    "@tauri-apps/cli": "2.10.0",
+    "@types/react": "19.1.8",
+    "@types/react-dom": "19.1.6",
+    "@vitejs/plugin-react": "4.5.2",
+    "eslint": "9.28.0",
+    "eslint-config-prettier": "10.1.5",
+    "prettier": "3.5.3",
+    "typescript": "5.8.3",
+    "typescript-eslint": "8.33.1",
+    "vite": "6.3.5"
   }
 }
