@@ -1,40 +1,44 @@
 # Roadmap de Desarrollo
 
-## Fase 0 - Fundacion
+## Fase 0 - Fundacion ✅
 > Configurar el proyecto, tooling, estructura base y base de datos. Al terminar, la app compila y abre una ventana vacia con la DB lista.
 
 ### Proyecto y tooling
-- [ ] Inicializar repositorio git + `.gitignore` (node_modules, target, *.db, .env)
-- [ ] Inicializar proyecto Tauri v2 con template React + TypeScript + Vite (`npm create tauri-app@latest`)
-- [ ] Configurar TailwindCSS v4 en el proyecto Vite
-- [ ] Configurar ESLint + Prettier para TypeScript/React
-- [ ] Configurar `clippy` y `rustfmt` para Rust (agregar `rustfmt.toml` y reglas clippy en `Cargo.toml`)
-- [ ] Configurar permisos/capabilities de Tauri v2 en `src-tauri/capabilities/`
+- [x] Inicializar repositorio git + `.gitignore` (node_modules, target, *.db, .env)
+- [x] Inicializar proyecto Tauri v2 con template React + TypeScript + Vite (`npm create tauri-app@latest`)
+- [x] Configurar TailwindCSS v4 en el proyecto Vite
+- [x] Configurar ESLint + Prettier para TypeScript/React
+- [x] Configurar `clippy` y `rustfmt` para Rust (agregar `rustfmt.toml` y reglas clippy en `Cargo.toml`)
+- [x] Configurar permisos/capabilities de Tauri v2 en `src-tauri/capabilities/`
 
 ### Estructura de directorios
-- [ ] Crear estructura backend: `src-tauri/src/{commands, services, db/queries, db/migrations}/` con archivos `mod.rs`
-- [ ] Crear estructura frontend: `src/{components/ui, components/layout, pages, hooks, stores, lib, types, styles}/`
-- [ ] Crear directorio de assets: `public/assets/{fonts, images}/`
+- [x] Crear estructura backend: `src-tauri/src/{commands, services, db/queries, db/migrations}/` con archivos `mod.rs`
+- [x] Crear estructura frontend: `src/{components/ui, components/layout, pages, hooks, stores, lib, types, styles}/`
+- [x] Crear directorio de assets: `public/assets/{fonts, images}/`
 
 ### Base de datos
-- [ ] Agregar dependencias Rust: `sqlx` (sqlite, runtime-tokio), `serde`, `chrono`, `uuid`, `rust_decimal`
-- [ ] Implementar sistema de migraciones (tabla `_migrations` + ejecucion secuencial al iniciar)
-- [ ] Migracion `001_initial_schema.sql`: crear las 8 tablas (currencies, accounts, categories, transactions, tags, transaction_tags, debts, exchange_rates) con todos los indices
-- [ ] Migracion `002_seed_currencies.sql`: insertar CLP, USD, EUR, JPY, CNY con symbol y decimal_places correctos
-- [ ] Migracion `003_seed_categories.sql`: insertar categorias por defecto:
+- [x] Agregar dependencias Rust: `sqlx` (sqlite, runtime-tokio), `serde`, `chrono`, `uuid`, `rust_decimal`
+- [x] Implementar sistema de migraciones (tabla `_migrations` + ejecucion secuencial al iniciar)
+- [x] Migracion `001_initial_schema.sql`: crear las 8 tablas (currencies, accounts, categories, transactions, tags, transaction_tags, debts, exchange_rates) con todos los indices
+- [x] Migracion `002_seed_currencies.sql`: insertar CLP, USD, EUR, JPY, CNY con symbol y decimal_places correctos
+- [x] Migracion `003_seed_categories.sql`: insertar categorias por defecto:
   - Expense: Alimentacion (Supermercado, Comida Rapida, Restaurant, Delivery), Transporte (Micro/Metro, Uber/Taxi, Bencina), Vivienda (Arriendo, Servicios Basicos, Internet), Entretenimiento (Streaming, Juegos, Salidas), Salud (Farmacia, Consulta Medica), Educacion, Ropa, Otros
   - Income: Sueldo (Sueldo Base, Bonos, Horas Extra), Freelance, Inversiones, Otros
 
 ### Fuentes
-- [ ] Descargar e incluir fuentes en `public/assets/fonts/`: Cinzel Decorative (headers), Share Tech Mono (cuerpo), JetBrains Mono (numeros)
-- [ ] Configurar `@font-face` en CSS global
+- [x] Descargar e incluir fuentes en `public/assets/fonts/`: Cinzel Decorative (headers), Share Tech Mono (cuerpo), JetBrains Mono (numeros)
+- [x] Configurar `@font-face` en CSS global
 
 ### Verificacion
-- [ ] `cargo build` exitoso en `src-tauri/`
-- [ ] `npm run tauri dev` abre una ventana con la DB creada y seeds aplicados
-- [ ] Verificar en SQLite que las tablas y seeds existen (`sqlite3 <path> ".tables"`)
+- [x] `cargo build` exitoso en `src-tauri/`
+- [x] `npm run tauri dev` abre una ventana con la DB creada y seeds aplicados
+- [x] Verificar en SQLite que las tablas y seeds existen (`sqlite3 <path> ".tables"`)
 
-**Entregable**: App Tauri que abre una ventana, DB con schema completo, seeds de monedas y categorias, fuentes cargadas, linters configurados.
+### Notas de implementacion
+- **CachyOS/Wayland**: Se requiere forzar `GDK_BACKEND=x11` y deshabilitar aceleracion HW de webkit2gtk (`WEBKIT_DISABLE_DMABUF_RENDERER=1`, `WEBKIT_DISABLE_COMPOSITING_MODE=1`) en `main.rs`
+- **Versiones fijadas**: Todas las dependencias npm pinneadas a versiones exactas (Vite 6.3.5, React 19.0.0, TailwindCSS 4.1.8) para estabilidad
+
+**Entregable**: App Tauri que abre una ventana, DB con schema completo, seeds de monedas y categorias, fuentes cargadas, linters configurados. ✅ Completado 2025-02-26
 
 ---
 
