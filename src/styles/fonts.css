@@ -1,0 +1,44 @@
+/* Necronomics - Font Declarations */
+
+/* Cinzel Decorative - Headers and titles (Gothic, arcane) */
+@font-face {
+    font-family: "Cinzel Decorative";
+    src: url("/assets/fonts/cinzel-decorative/CinzelDecorative-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Cinzel Decorative";
+    src: url("/assets/fonts/cinzel-decorative/CinzelDecorative-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Share Tech Mono - Body/UI text (retro-tech monospace) */
+@font-face {
+    font-family: "Share Tech Mono";
+    src: url("/assets/fonts/share-tech-mono/ShareTechMono-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* JetBrains Mono - Financial numbers (optimized monospace) */
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("/assets/fonts/jetbrains-mono/JetBrainsMono-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("/assets/fonts/jetbrains-mono/JetBrainsMono-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
