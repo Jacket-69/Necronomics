@@ -1,5 +1,3 @@
-import "./App.css";
-
 const App = () => {
   return (
     <div className="min-h-screen bg-[#0a0f06] text-[#a8b878] flex items-center justify-center">
