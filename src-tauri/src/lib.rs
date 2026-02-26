@@ -1,0 +1,39 @@
+mod commands;
+mod db;
+mod services;
+
+use tauri::Manager;
+
+/// Initialize the database during app setup.
+/// Creates the SQLite database and runs all pending migrations.
+async fn init_database(app: &tauri::AppHandle) -> Result<(), Box<dyn std::error::Error>> {
+    let app_data_dir = app
+        .path()
+        .app_data_dir()
+        .expect("failed to resolve app data dir");
+
+    let pool = db::create_pool(&app_data_dir).await?;
+    db::run_migrations(&pool).await?;
+
+    // Store the pool in Tauri's managed state for later use
+    app.manage(pool);
+
+    Ok(())
+}
+
+#[cfg_attr(mobile, tauri::mobile_entry_point)]
+pub fn run() {
+    tauri::Builder::default()
+        .plugin(tauri_plugin_opener::init())
+        .setup(|app| {
+            let handle = app.handle().clone();
+            tauri::async_runtime::block_on(async move {
+                init_database(&handle)
+                    .await
+                    .expect("failed to initialize database");
+            });
+            Ok(())
+        })
+        .run(tauri::generate_context!())
+        .expect("error while running tauri application");
+}
