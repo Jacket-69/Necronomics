@@ -18,6 +18,13 @@
 
 **Requirement IDs:** ACCT-01, ACCT-02, ACCT-03, ACCT-04
 
+**Plans:** 3 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Foundation: frontend deps, TypeScript types, Rust backend commands
+- [ ] 01-02-PLAN.md — Zustand store, React Router, accounts list page
+- [ ] 01-03-PLAN.md — Account form (create/edit), delete/archive modal, lifecycle verification
+
 **Observable success criteria:**
 - User can create cash, bank, and credit-card accounts with required fields.
 - User can edit account details, including credit limit and billing day for credit cards.
@@ -120,4 +127,4 @@
 | Total | 43 | 43/43 assigned exactly once |
 
 ---
-*Last updated: 2026-02-27 after v1 roadmap creation*
+*Last updated: 2026-02-27 after Phase 1 planning*
