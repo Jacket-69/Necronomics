@@ -7,10 +7,10 @@
 
 ### Accounts
 
-- [ ] **ACCT-01**: User can create an account as cash, bank, or credit card with name and currency.
-- [ ] **ACCT-02**: User can edit account details; credit-card accounts require editable credit limit and billing day.
-- [ ] **ACCT-03**: User can delete or archive an account only after explicit confirmation.
-- [ ] **ACCT-04**: User can view current balance for each account.
+- [x] **ACCT-01**: User can create an account as cash, bank, or credit card with name and currency.
+- [x] **ACCT-02**: User can edit account details; credit-card accounts require editable credit limit and billing day.
+- [x] **ACCT-03**: User can delete or archive an account only after explicit confirmation.
+- [x] **ACCT-04**: User can view current balance for each account.
 
 ### Categories
 
@@ -124,10 +124,10 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| ACCT-01 | Phase 1: Accounts | Pending |
-| ACCT-02 | Phase 1: Accounts | Pending |
-| ACCT-03 | Phase 1: Accounts | Pending |
-| ACCT-04 | Phase 1: Accounts | Pending |
+| ACCT-01 | Phase 1: Accounts | Complete |
+| ACCT-02 | Phase 1: Accounts | Complete |
+| ACCT-03 | Phase 1: Accounts | Complete |
+| ACCT-04 | Phase 1: Accounts | Complete |
 | CATE-01 | Phase 2: Categories | Pending |
 | CATE-02 | Phase 2: Categories | Pending |
 | CATE-03 | Phase 2: Categories | Pending |
