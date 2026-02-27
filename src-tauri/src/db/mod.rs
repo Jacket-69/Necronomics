@@ -1,3 +1,4 @@
+pub mod models;
 pub mod queries;
 
 use sqlx::sqlite::{SqlitePool, SqlitePoolOptions};

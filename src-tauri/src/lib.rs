@@ -25,6 +25,15 @@ async fn init_database(app: &tauri::AppHandle) -> Result<(), Box<dyn std::error:
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
+        .invoke_handler(tauri::generate_handler![
+            commands::accounts::list_accounts,
+            commands::accounts::get_account,
+            commands::accounts::create_account,
+            commands::accounts::update_account,
+            commands::accounts::archive_account,
+            commands::accounts::delete_account,
+            commands::accounts::list_currencies,
+        ])
         .setup(|app| {
             let handle = app.handle().clone();
             tauri::async_runtime::block_on(async move {
