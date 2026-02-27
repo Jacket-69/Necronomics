@@ -11,12 +11,17 @@
     "lint": "eslint src/"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "@tailwindcss/vite": "4.1.8",
     "@tauri-apps/api": "2.10.1",
     "@tauri-apps/plugin-opener": "2.5.3",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "tailwindcss": "4.1.8"
+    "react-hook-form": "^7.71.2",
+    "react-router": "^7.13.1",
+    "tailwindcss": "4.1.8",
+    "zod": "^4.3.6",
+    "zustand": "^5.0.11"
   },
   "devDependencies": {
     "@eslint/js": "9.28.0",
