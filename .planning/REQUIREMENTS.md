@@ -124,57 +124,57 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| ACCT-01 | TBD | Pending |
-| ACCT-02 | TBD | Pending |
-| ACCT-03 | TBD | Pending |
-| ACCT-04 | TBD | Pending |
-| CATE-01 | TBD | Pending |
-| CATE-02 | TBD | Pending |
-| CATE-03 | TBD | Pending |
-| CATE-04 | TBD | Pending |
-| TXN-01 | TBD | Pending |
-| TXN-02 | TBD | Pending |
-| TXN-03 | TBD | Pending |
-| TXN-04 | TBD | Pending |
-| TXN-05 | TBD | Pending |
-| TXN-06 | TBD | Pending |
-| TXN-07 | TBD | Pending |
-| TXN-08 | TBD | Pending |
-| BAL-01 | TBD | Pending |
-| BAL-02 | TBD | Pending |
-| DEBT-01 | TBD | Pending |
-| DEBT-02 | TBD | Pending |
-| DEBT-03 | TBD | Pending |
-| DEBT-04 | TBD | Pending |
-| DEBT-05 | TBD | Pending |
-| DEBT-06 | TBD | Pending |
-| DEBT-07 | TBD | Pending |
-| DASH-01 | TBD | Pending |
-| DASH-02 | TBD | Pending |
-| DASH-03 | TBD | Pending |
-| DASH-04 | TBD | Pending |
-| CURR-01 | TBD | Pending |
-| CURR-02 | TBD | Pending |
-| CURR-03 | TBD | Pending |
-| CURR-04 | TBD | Pending |
-| CONF-01 | TBD | Pending |
-| DATA-01 | TBD | Pending |
-| DATA-02 | TBD | Pending |
-| DATA-03 | TBD | Pending |
-| DATA-04 | TBD | Pending |
-| UX-01 | TBD | Pending |
-| UX-02 | TBD | Pending |
-| UX-03 | TBD | Pending |
-| UX-04 | TBD | Pending |
-| UX-05 | TBD | Pending |
+| ACCT-01 | Phase 1: Accounts | Pending |
+| ACCT-02 | Phase 1: Accounts | Pending |
+| ACCT-03 | Phase 1: Accounts | Pending |
+| ACCT-04 | Phase 1: Accounts | Pending |
+| CATE-01 | Phase 2: Categories | Pending |
+| CATE-02 | Phase 2: Categories | Pending |
+| CATE-03 | Phase 2: Categories | Pending |
+| CATE-04 | Phase 2: Categories | Pending |
+| TXN-01 | Phase 3: Transactions and Balances | Pending |
+| TXN-02 | Phase 3: Transactions and Balances | Pending |
+| TXN-03 | Phase 3: Transactions and Balances | Pending |
+| TXN-04 | Phase 3: Transactions and Balances | Pending |
+| TXN-05 | Phase 3: Transactions and Balances | Pending |
+| TXN-06 | Phase 3: Transactions and Balances | Pending |
+| TXN-07 | Phase 3: Transactions and Balances | Pending |
+| TXN-08 | Phase 3: Transactions and Balances | Pending |
+| BAL-01 | Phase 3: Transactions and Balances | Pending |
+| BAL-02 | Phase 3: Transactions and Balances | Pending |
+| DEBT-01 | Phase 4: Debts | Pending |
+| DEBT-02 | Phase 4: Debts | Pending |
+| DEBT-03 | Phase 4: Debts | Pending |
+| DEBT-04 | Phase 4: Debts | Pending |
+| DEBT-05 | Phase 4: Debts | Pending |
+| DEBT-06 | Phase 4: Debts | Pending |
+| DEBT-07 | Phase 4: Debts | Pending |
+| DASH-01 | Phase 5: Dashboard | Pending |
+| DASH-02 | Phase 5: Dashboard | Pending |
+| DASH-03 | Phase 5: Dashboard | Pending |
+| DASH-04 | Phase 5: Dashboard | Pending |
+| CURR-01 | Phase 6: Currency and Settings | Pending |
+| CURR-02 | Phase 6: Currency and Settings | Pending |
+| CURR-03 | Phase 6: Currency and Settings | Pending |
+| CURR-04 | Phase 6: Currency and Settings | Pending |
+| CONF-01 | Phase 6: Currency and Settings | Pending |
+| DATA-01 | Phase 7: Data Portability | Pending |
+| DATA-02 | Phase 7: Data Portability | Pending |
+| DATA-03 | Phase 7: Data Portability | Pending |
+| DATA-04 | Phase 7: Data Portability | Pending |
+| UX-01 | Phase 8: UX Foundations | Pending |
+| UX-02 | Phase 8: UX Foundations | Pending |
+| UX-03 | Phase 8: UX Foundations | Pending |
+| UX-04 | Phase 8: UX Foundations | Pending |
+| UX-05 | Phase 8: UX Foundations | Pending |
 
 ## Coverage
 
 - v1 requirements: 43 total
 - v1 requirements with traceability rows: 43
-- v1 requirements assigned to concrete roadmap phase: 0
-- v1 requirements pending roadmap assignment (Phase `TBD`): 43
+- v1 requirements assigned to concrete roadmap phase: 43
+- v1 requirements pending roadmap assignment (Phase `TBD`): 0
 
 ---
 *Requirements defined: 2026-02-27*
-*Last updated: 2026-02-27 after initial definition*
+*Last updated: 2026-02-27 after roadmap traceability assignment*
