@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useAccountStore } from "../stores/accountStore";
 import { AccountList } from "../components/accounts/AccountList";
@@ -6,10 +6,29 @@ import { AccountList } from "../components/accounts/AccountList";
 export const AccountsPage = () => {
   const navigate = useNavigate();
   const { accounts, isLoading, error, fetchAccounts } = useAccountStore();
+  const [toast, setToast] = useState<string | null>(null);
 
   useEffect(() => {
     fetchAccounts();
   }, [fetchAccounts]);
+
+  // Auto-dismiss toast after 3 seconds
+  useEffect(() => {
+    if (toast) {
+      const timer = setTimeout(() => setToast(null), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [toast]);
+
+  const handleArchived = () => {
+    setToast("Cuenta archivada exitosamente");
+    fetchAccounts();
+  };
+
+  const handleDeleted = () => {
+    setToast("Cuenta eliminada exitosamente");
+    fetchAccounts();
+  };
 
   return (
     <div className="min-h-screen px-4 py-6 sm:px-6 lg:px-8">
@@ -86,7 +105,26 @@ export const AccountsPage = () => {
 
       {/* Account list */}
       {!isLoading && !error && accounts.length > 0 && (
-        <AccountList accounts={accounts} />
+        <AccountList
+          accounts={accounts}
+          onAccountArchived={handleArchived}
+          onAccountDeleted={handleDeleted}
+        />
+      )}
+
+      {/* Toast notification */}
+      {toast && (
+        <div
+          className="fixed bottom-4 right-4 z-50 rounded-lg border px-4 py-3 shadow-lg transition-opacity"
+          style={{
+            backgroundColor: "#111a0a",
+            borderColor: "#7fff00",
+            color: "#c4d4a0",
+            fontFamily: '"Share Tech Mono", "Courier New", monospace',
+          }}
+        >
+          {toast}
+        </div>
       )}
     </div>
   );

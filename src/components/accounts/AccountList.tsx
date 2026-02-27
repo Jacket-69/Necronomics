@@ -1,21 +1,40 @@
+import { useState } from "react";
 import { useNavigate } from "react-router";
 import type { Account } from "../../types";
 import { AccountRow } from "./AccountRow";
 import { AccountCard } from "./AccountCard";
+import { ConfirmDeleteModal } from "./ConfirmDeleteModal";
 
 interface AccountListProps {
   accounts: Account[];
+  onAccountArchived: () => void;
+  onAccountDeleted: () => void;
 }
 
-export const AccountList = ({ accounts }: AccountListProps) => {
+export const AccountList = ({
+  accounts,
+  onAccountArchived,
+  onAccountDeleted,
+}: AccountListProps) => {
   const navigate = useNavigate();
+  const [selectedAccount, setSelectedAccount] = useState<Account | null>(null);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const handleEdit = (id: string) => {
     navigate(`/accounts/${id}/edit`);
   };
 
   const handleArchive = (id: string) => {
-    console.log("Archive account:", id);
+    const account = accounts.find((a) => a.id === id);
+    if (account) {
+      setSelectedAccount(account);
+      setIsDeleteModalOpen(true);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setSelectedAccount(null);
+    setIsDeleteModalOpen(false);
   };
 
   return (
@@ -67,6 +86,23 @@ export const AccountList = ({ accounts }: AccountListProps) => {
           />
         ))}
       </div>
+
+      {/* Delete/Archive Modal */}
+      {selectedAccount && (
+        <ConfirmDeleteModal
+          account={selectedAccount}
+          isOpen={isDeleteModalOpen}
+          onClose={handleCloseModal}
+          onArchived={() => {
+            handleCloseModal();
+            onAccountArchived();
+          }}
+          onDeleted={() => {
+            handleCloseModal();
+            onAccountDeleted();
+          }}
+        />
+      )}
     </>
   );
 };
