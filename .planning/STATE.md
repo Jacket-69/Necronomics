@@ -11,9 +11,8 @@
 
 ## Current Execution State
 
-- Active phase: Phase 1 - Accounts (executing)
-- Current plan: 01-03 (next to execute)
-- Plans completed: 01-01, 01-02 (2/3)
+- Active phase: Phase 1 - Accounts (all plans complete, pending verification)
+- Plans completed: 01-01, 01-02, 01-03 (3/3)
 - Total roadmap phases: 8
 - Requirement coverage status: 43/43 v1 requirements assigned; 4 completed (ACCT-01..04)
 
@@ -22,6 +21,8 @@
 - sqlx runtime queries used (not compile-time macros) for flexibility
 - Account type field dual-renamed for Rust keyword collision
 - list_currencies added as 7th command for currency dropdown
+- Zod v4 uses `message` param instead of `errorMap` for enum validation
+- react-hook-form + zodResolver pattern established for forms
 
 ## Memory
 
@@ -31,8 +32,8 @@
 
 ## Session
 
-- Last completed: 01-02-PLAN.md (Store + List UI)
-- Resume from: 01-03-PLAN.md (Forms + Delete Modal)
+- Last completed: 01-03-PLAN.md (Forms + Delete Modal)
+- Phase 1 all plans complete, pending verification
 
 ---
-*Last updated: 2026-02-27 after Plan 01-02 execution*
+*Last updated: 2026-02-27 after Plan 01-03 execution*
