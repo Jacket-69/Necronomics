@@ -1,37 +1,34 @@
+import { Routes, Route, Navigate } from "react-router";
+import { AccountsPage } from "./pages/AccountsPage";
+
 const App = () => {
   return (
     <div
       style={{
         minHeight: "100vh",
         backgroundColor: "#0a0f06",
-        color: "#a8b878",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
       }}
     >
-      <div style={{ textAlign: "center" }}>
-        <h1
-          style={{
-            fontSize: "2.5rem",
-            fontWeight: "bold",
-            marginBottom: "1rem",
-            color: "#c4d4a0",
-            fontFamily: '"Cinzel Decorative", Georgia, serif',
-          }}
-        >
-          Necronomics
-        </h1>
-        <p
-          style={{
-            fontSize: "1.125rem",
-            color: "#6b7c3e",
-            fontFamily: '"Share Tech Mono", "Courier New", monospace',
-          }}
-        >
-          &quot;That is not dead which can eternal lie...&quot;
-        </p>
-      </div>
+      <Routes>
+        <Route path="/" element={<Navigate to="/accounts" replace />} />
+        <Route path="/accounts" element={<AccountsPage />} />
+        <Route
+          path="/accounts/new"
+          element={
+            <div style={{ color: "#a8b878", padding: "2rem" }}>
+              Nueva cuenta
+            </div>
+          }
+        />
+        <Route
+          path="/accounts/:id/edit"
+          element={
+            <div style={{ color: "#a8b878", padding: "2rem" }}>
+              Editar cuenta
+            </div>
+          }
+        />
+      </Routes>
     </div>
   );
 };
