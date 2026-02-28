@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-02-28T03:40:38Z"
+last_updated: "2026-02-28T03:46:36Z"
 progress:
   total_phases: 3
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 9
-  completed_plans: 8
+  completed_plans: 9
 ---
 
 # State: Necronomics Planning Memory
@@ -24,11 +24,11 @@ progress:
 
 ## Current Execution State
 
-- Active phase: Phase 3 - Transactions and Balances (plan 2 of 3 complete)
-- Plans completed: 01-01, 01-02, 01-03, 02-01, 02-02, 02-03, 03-01, 03-02 (8 total)
-- Current plan: 03-03 (next)
+- Active phase: Phase 3 - Transactions and Balances (3 of 3 complete — PHASE COMPLETE)
+- Plans completed: 01-01, 01-02, 01-03, 02-01, 02-02, 02-03, 03-01, 03-02, 03-03 (9 total)
+- Current plan: Phase 3 complete, ready for Phase 4
 - Total roadmap phases: 8
-- Requirement coverage status: 43/43 v1 requirements assigned; 21 completed (ACCT-01..04, CATE-01..04, TXN-01..08, BAL-01..02)
+- Requirement coverage status: 43/43 v1 requirements assigned; 26 completed (ACCT-01..04, CATE-01..04, TXN-01..08, BAL-01..02)
 
 ## Decisions
 
@@ -54,6 +54,10 @@ progress:
 - setFilters resets page to 1 on non-page filter changes (prevents empty-page bug)
 - Type toggle uses Controller-based segmented buttons (not native radio inputs)
 - Amount stored as string in form, converted to minor units on submit
+- NavLink navigation bar added to App.tsx for all pages (Cuentas, Categorias, Transacciones)
+- Amount filter uses human-readable values, converted to CLP minor units in page layer
+- Balance flash animation with CSS @keyframes and ref-based previous value tracking
+- TransactionTable receives currencies prop for per-account currency code resolution
 
 ## Memory
 
@@ -72,12 +76,18 @@ progress:
 - Transaction store manages filter/pagination/sort state; store drives API queries
 - TransactionFormModal follows CategoryFormModal pattern: react-hook-form + zod + dirty guard
 - Segmented toggle button pattern: selected (#4a5d23/#7fff00), unselected (#111a0a/#6b7c3e)
+- Sortable table: click column toggles ASC/DESC (same column) or sets DESC (new column)
+- Pagination: page numbers with ellipsis, always first/last visible, centered window of 3
+- Collapsible filter bar: search always visible, Filtros button expands filter grid
+- BalanceSummary: per-account balances + consolidated total, flash animation on changes
+- TransactionsPage follows CategoriesPage pattern: modal state, toast, fetchOnMount
+- URL query param ?account=:id pre-applies account filter on TransactionsPage mount
 
 ## Session
 
-- Last completed: 03-02 (Transaction store & CRUD modals) — 2 tasks, 3 min
-- Stopped at: Completed 03-02-PLAN.md
+- Last completed: 03-03 (Transaction Page UI) — 2 tasks, 3 min
+- Stopped at: Completed 03-03-PLAN.md (Phase 3 complete)
 
 ---
 
-_Last updated: 2026-02-28 after 03-02 completion_
+_Last updated: 2026-02-28 after 03-03 completion_
