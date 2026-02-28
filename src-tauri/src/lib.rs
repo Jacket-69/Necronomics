@@ -38,6 +38,11 @@ pub fn run() {
             commands::categories::create_category,
             commands::categories::update_category,
             commands::categories::delete_category,
+            commands::transactions::create_transaction,
+            commands::transactions::update_transaction,
+            commands::transactions::delete_transaction,
+            commands::transactions::list_transactions,
+            commands::transactions::get_balance_summary,
         ])
         .setup(|app| {
             let handle = app.handle().clone();
