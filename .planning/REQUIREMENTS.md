@@ -14,10 +14,10 @@
 
 ### Categories
 
-- [ ] **CATE-01**: User can create a category classified as income or expense.
-- [ ] **CATE-02**: User can create a subcategory under a parent category.
-- [ ] **CATE-03**: User can edit category name, type, and parent.
-- [ ] **CATE-04**: User cannot delete a category that is linked to existing transactions.
+- [x] **CATE-01**: User can create a category classified as income or expense.
+- [x] **CATE-02**: User can create a subcategory under a parent category.
+- [x] **CATE-03**: User can edit category name, type, and parent.
+- [x] **CATE-04**: User cannot delete a category that is linked to existing transactions.
 
 ### Transactions
 
@@ -128,10 +128,10 @@
 | ACCT-02 | Phase 1: Accounts | Complete |
 | ACCT-03 | Phase 1: Accounts | Complete |
 | ACCT-04 | Phase 1: Accounts | Complete |
-| CATE-01 | Phase 2: Categories | Pending |
-| CATE-02 | Phase 2: Categories | Pending |
-| CATE-03 | Phase 2: Categories | Pending |
-| CATE-04 | Phase 2: Categories | Pending |
+| CATE-01 | Phase 2: Categories | Complete |
+| CATE-02 | Phase 2: Categories | Complete |
+| CATE-03 | Phase 2: Categories | Complete |
+| CATE-04 | Phase 2: Categories | Complete |
 | TXN-01 | Phase 3: Transactions and Balances | Pending |
 | TXN-02 | Phase 3: Transactions and Balances | Pending |
 | TXN-03 | Phase 3: Transactions and Balances | Pending |
