@@ -61,6 +61,14 @@ Plans:
 
 **Requirement IDs:** TXN-01, TXN-02, TXN-03, TXN-04, TXN-05, TXN-06, TXN-07, TXN-08, BAL-01, BAL-02
 
+**Plans:** 3 plans
+
+Plans:
+
+- [ ] 03-01-PLAN.md — Backend data layer: Rust models, QueryBuilder queries, commands with atomic balance updates, TS types, API wrappers, utilities
+- [ ] 03-02-PLAN.md — Zustand transaction store with filter/pagination state, create/edit form modal, delete confirmation modal
+- [ ] 03-03-PLAN.md — Transactions page: sortable table, pagination, collapsible filters, balance summary, route wiring
+
 **Observable success criteria:**
 
 - User can create, edit, and delete transactions with required fields and confirmation on delete.
