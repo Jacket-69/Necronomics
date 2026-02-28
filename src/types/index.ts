@@ -1,4 +1,4 @@
-export type AccountType = 'cash' | 'bank' | 'credit_card';
+export type AccountType = "cash" | "bank" | "credit_card";
 
 export interface Account {
   id: string;
@@ -33,4 +33,30 @@ export interface Currency {
   name: string;
   symbol: string;
   decimalPlaces: number;
+}
+
+export type CategoryType = "income" | "expense";
+
+export interface Category {
+  id: string;
+  name: string;
+  type: CategoryType;
+  icon: string | null;
+  parentId: string | null;
+  isActive: number;
+  createdAt: string;
+}
+
+export interface CreateCategoryInput {
+  name: string;
+  categoryType: CategoryType;
+  icon: string | null;
+  parentId: string | null;
+}
+
+export interface UpdateCategoryInput {
+  name?: string;
+  categoryType?: CategoryType;
+  icon?: string | null;
+  parentId?: string | null;
 }

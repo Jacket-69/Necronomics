@@ -33,6 +33,11 @@ pub fn run() {
             commands::accounts::archive_account,
             commands::accounts::delete_account,
             commands::accounts::list_currencies,
+            commands::categories::list_categories,
+            commands::categories::get_category,
+            commands::categories::create_category,
+            commands::categories::update_category,
+            commands::categories::delete_category,
         ])
         .setup(|app| {
             let handle = app.handle().clone();
