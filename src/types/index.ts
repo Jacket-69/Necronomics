@@ -60,3 +60,71 @@ export interface UpdateCategoryInput {
   icon?: string | null;
   parentId?: string | null;
 }
+
+export type TransactionType = "income" | "expense";
+
+export interface Transaction {
+  id: string;
+  accountId: string;
+  categoryId: string;
+  amount: number; // integer minor units
+  type: TransactionType;
+  description: string;
+  date: string;
+  notes: string | null;
+  createdAt: string;
+}
+
+export interface CreateTransactionInput {
+  accountId: string;
+  categoryId: string;
+  amount: number; // already in minor units
+  transactionType: TransactionType;
+  description: string;
+  date: string;
+}
+
+export interface UpdateTransactionInput {
+  accountId?: string;
+  categoryId?: string;
+  amount?: number;
+  transactionType?: TransactionType;
+  description?: string;
+  date?: string;
+}
+
+export interface TransactionFilters {
+  accountId?: string | null;
+  categoryId?: string | null;
+  transactionType?: string | null;
+  dateFrom?: string | null;
+  dateTo?: string | null;
+  amountMin?: number | null;
+  amountMax?: number | null;
+  search?: string | null;
+  sortBy?: string | null;
+  sortDir?: "ASC" | "DESC" | null;
+  page?: number | null;
+  pageSize?: number | null;
+}
+
+export interface PaginatedResult<T> {
+  data: T[];
+  total: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
+}
+
+export interface AccountBalance {
+  accountId: string;
+  accountName: string;
+  balance: number;
+  currencyCode: string;
+}
+
+export interface BalanceSummary {
+  accounts: AccountBalance[];
+  consolidatedTotal: number | null;
+  baseCurrencyCode: string;
+}

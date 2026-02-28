@@ -7,6 +7,12 @@ import type {
   Category,
   CreateCategoryInput,
   UpdateCategoryInput,
+  Transaction,
+  CreateTransactionInput,
+  UpdateTransactionInput,
+  TransactionFilters,
+  PaginatedResult,
+  BalanceSummary,
 } from "../types";
 
 export const accountApi = {
@@ -52,4 +58,27 @@ export const categoryApi = {
     invoke("update_category", { id, ...input }),
 
   delete: (id: string): Promise<void> => invoke("delete_category", { id }),
+};
+
+export const transactionApi = {
+  list: (filters: TransactionFilters): Promise<PaginatedResult<Transaction>> =>
+    invoke("list_transactions", { filter: filters }),
+
+  create: (input: CreateTransactionInput): Promise<Transaction> =>
+    invoke("create_transaction", {
+      accountId: input.accountId,
+      categoryId: input.categoryId,
+      amount: input.amount,
+      transactionType: input.transactionType,
+      description: input.description,
+      date: input.date,
+    }),
+
+  update: (id: string, input: UpdateTransactionInput): Promise<Transaction> =>
+    invoke("update_transaction", { id, ...input }),
+
+  delete: (id: string): Promise<void> => invoke("delete_transaction", { id }),
+
+  getBalanceSummary: (baseCurrencyId?: string): Promise<BalanceSummary> =>
+    invoke("get_balance_summary", { baseCurrencyId: baseCurrencyId ?? null }),
 };
