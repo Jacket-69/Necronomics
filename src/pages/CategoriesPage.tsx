@@ -2,7 +2,20 @@ import { useEffect, useState, useCallback } from "react";
 import { useCategoryStore } from "../stores/categoryStore";
 import { CategoryList } from "../components/categories/CategoryList";
 import { ContextMenu } from "../components/categories/ContextMenu";
+import { CategoryFormModal } from "../components/categories/CategoryFormModal";
+import { DeleteCategoryModal } from "../components/categories/DeleteCategoryModal";
 import type { Category, CategoryType } from "../types";
+
+interface FormModalState {
+  isOpen: boolean;
+  editCategory?: Category;
+  parentCategory?: Category;
+}
+
+interface DeleteModalState {
+  isOpen: boolean;
+  category: Category | null;
+}
 
 export const CategoriesPage = () => {
   const { categories, isLoading, error, fetchCategories } = useCategoryStore();
@@ -12,6 +25,11 @@ export const CategoriesPage = () => {
     position: { x: number; y: number };
     category: Category;
   } | null>(null);
+  const [formModal, setFormModal] = useState<FormModalState>({ isOpen: false });
+  const [deleteModal, setDeleteModal] = useState<DeleteModalState>({
+    isOpen: false,
+    category: null,
+  });
 
   useEffect(() => {
     fetchCategories();
@@ -38,8 +56,7 @@ export const CategoriesPage = () => {
   }, []);
 
   const handleNewCategory = () => {
-    // TODO: Plan 03 will wire this to the create category modal
-    console.log("New category clicked");
+    setFormModal({ isOpen: true });
   };
 
   const isParent = contextMenu?.category.parentId === null;
@@ -49,16 +66,14 @@ export const CategoriesPage = () => {
         {
           label: "Editar",
           onClick: () => {
-            // TODO: Plan 03 will wire this to the edit category modal
-            console.log("Edit category:", contextMenu.category.id);
+            setFormModal({ isOpen: true, editCategory: contextMenu.category });
             handleCloseContextMenu();
           },
         },
         {
           label: "Eliminar",
           onClick: () => {
-            // TODO: Plan 03 will wire this to the delete confirmation modal
-            console.log("Delete category:", contextMenu.category.id);
+            setDeleteModal({ isOpen: true, category: contextMenu.category });
             handleCloseContextMenu();
           },
         },
@@ -67,8 +82,7 @@ export const CategoriesPage = () => {
               {
                 label: "Agregar subcategoria",
                 onClick: () => {
-                  // TODO: Plan 03 will wire this to the add subcategory modal
-                  console.log("Add subcategory to:", contextMenu.category.id);
+                  setFormModal({ isOpen: true, parentCategory: contextMenu.category });
                   handleCloseContextMenu();
                 },
               },
@@ -189,6 +203,31 @@ export const CategoriesPage = () => {
           onClose={handleCloseContextMenu}
         />
       )}
+
+      {/* Category form modal (create / edit / add subcategory) */}
+      <CategoryFormModal
+        isOpen={formModal.isOpen}
+        onClose={() => setFormModal({ isOpen: false })}
+        onSuccess={(msg) => {
+          setToast(msg);
+          setFormModal({ isOpen: false });
+        }}
+        editCategory={formModal.editCategory}
+        parentCategory={formModal.parentCategory}
+        categories={categories}
+      />
+
+      {/* Delete category modal */}
+      <DeleteCategoryModal
+        isOpen={deleteModal.isOpen}
+        category={deleteModal.category}
+        subcategories={categories.filter((c) => c.parentId === deleteModal.category?.id)}
+        onClose={() => setDeleteModal({ isOpen: false, category: null })}
+        onSuccess={(msg) => {
+          setToast(msg);
+          setDeleteModal({ isOpen: false, category: null });
+        }}
+      />
 
       {/* Toast notification */}
       {toast && (
