@@ -16,10 +16,13 @@ Give the user precise, trustworthy control over personal money flows and debt co
 - ✓ Local SQLite persistence is initialized at startup with migration tracking and seed data (currencies/categories) — existing
 - ✓ Base repository/tooling foundation is in place (Rust/TypeScript toolchains, lint/format, Tailwind pipeline, project structure) — existing
 - ✓ Initial visual/theming assets pipeline exists (custom fonts, global styles, design documentation) — existing
+- ✓ Account CRUD lifecycle (cash, bank, credit_card) with create/edit/delete/archive — Phase 1
+- ✓ Category and subcategory management with Lucide icons, tabbed layout, and context menu — Phase 2
+- ✓ Category business rules: single-level nesting, type cascade, transaction-link deletion guard — Phase 2
 
 ### Active
 
-- [ ] User can manage accounts, categories, and transactions with complete CRUD and reliable automatic balance updates.
+- [ ] User can manage transactions with complete CRUD and reliable automatic balance updates.
 - [ ] User can search, filter, sort, and paginate transactions to inspect spending/income patterns quickly.
 - [ ] User can track installment debts tied to credit cards, including remaining cuotas, available credit, and payment projections.
 - [ ] User can use a dashboard with custom D3 visualizations that explain financial behavior over time.
@@ -50,13 +53,20 @@ This project is driven by personal use: the user needs concrete, detailed financ
 
 ## Key Decisions
 
-| Decision | Rationale | Outcome |
-|----------|-----------|---------|
-| Build as Tauri desktop app (Rust backend + React frontend) | Need native-like performance, local filesystem/DB control, and lightweight distribution | — Pending |
-| Keep architecture offline-first and local-only | Financial privacy and availability without internet are core product principles | — Pending |
-| Use SQLite + migrations as persistence backbone | Simple, portable, robust local data layer for personal finance workflows | — Pending |
-| Treat docs (`PROJECT_VISION`, `FEATURES`, `ARCHITECTURE`, `ROADMAP`) as source of truth for planning initialization | Documentation already defines scope and sequencing in detail | — Pending |
-| Continue from existing foundation as brownfield | Fase 0 artifacts already exist and should be leveraged, not re-planned from scratch | — Pending |
+| Decision                                                                                                            | Rationale                                                                               | Outcome             |
+| ------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ------------------- |
+| Build as Tauri desktop app (Rust backend + React frontend)                                                          | Need native-like performance, local filesystem/DB control, and lightweight distribution | — Pending           |
+| Keep architecture offline-first and local-only                                                                      | Financial privacy and availability without internet are core product principles         | — Pending           |
+| Use SQLite + migrations as persistence backbone                                                                     | Simple, portable, robust local data layer for personal finance workflows                | — Pending           |
+| Treat docs (`PROJECT_VISION`, `FEATURES`, `ARCHITECTURE`, `ROADMAP`) as source of truth for planning initialization | Documentation already defines scope and sequencing in detail                            | — Pending           |
+| Continue from existing foundation as brownfield                                                                     | Fase 0 artifacts already exist and should be leveraged, not re-planned from scratch     | — Pending           |
+| sqlx runtime queries (not compile-time macros)                                                                      | Flexibility for runtime SQL without build-time database dependency                      | Working — Phase 1   |
+| Dual rename pattern for Rust keyword fields (`#[sqlx(rename)]` + `#[serde(rename)]`)                                | Rust `type` keyword collision with DB column names                                      | Working — Phase 1   |
+| react-hook-form + zodResolver for form validation                                                                   | Consistent, typed form handling across all CRUD modals                                  | Working — Phase 1,2 |
+| Zustand store per domain (accounts, categories)                                                                     | Simple state management following same pattern across modules                           | Working — Phase 1,2 |
+| Static Lucide icon map (~35 icons) for dynamic rendering                                                            | Reliable icon rendering from string names without dynamic imports                       | Working — Phase 2   |
+| Business rules in Tauri command layer, queries as simple data access                                                | Clean separation: queries are reusable, commands enforce domain logic                   | Working — Phase 2   |
 
 ---
-*Last updated: 2026-02-27 after initialization*
+
+_Last updated: 2026-02-28 after Phase 2_
