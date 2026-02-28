@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-02-28T01:30:13Z"
+last_updated: "2026-02-28T01:35:05Z"
 progress:
   total_phases: 2
   completed_phases: 1
   total_plans: 6
-  completed_plans: 4
+  completed_plans: 5
 ---
 
 # State: Necronomics Planning Memory
@@ -24,9 +24,9 @@ progress:
 
 ## Current Execution State
 
-- Active phase: Phase 2 - Categories (plan 1 of 3 complete)
-- Plans completed: 01-01, 01-02, 01-03, 02-01 (4 total)
-- Current plan: 02-02
+- Active phase: Phase 2 - Categories (plan 2 of 3 complete)
+- Plans completed: 01-01, 01-02, 01-03, 02-01, 02-02 (5 total)
+- Current plan: 02-03
 - Total roadmap phases: 8
 - Requirement coverage status: 43/43 v1 requirements assigned; 8 completed (ACCT-01..04, CATE-01..04)
 
@@ -40,6 +40,8 @@ progress:
 - Category subcategories inherit type from parent on creation
 - Business rule validation in command layer, queries remain simple data access
 - Emoji icons migrated to Lucide icon names for consistent rendering
+- Static icon map (~35 Lucide icons) for dynamic icon rendering by name string
+- Context menu placeholder actions for Plan 03 modal wiring
 
 ## Memory
 
@@ -47,12 +49,14 @@ progress:
 - Tauri command pattern established: async fn with State<SqlitePool>, returning Result<T, String>
 - Frontend invoke wrapper pattern established: typed functions calling invoke() with command names
 - Category CRUD pattern mirrors Account pattern: queries module + commands module + TS types + invoke wrappers
+- Zustand category store follows accountStore pattern exactly: try/catch, optimistic updates, error recovery
+- Lucide iconMap exported from CategoryRow for reuse in icon picker
 
 ## Session
 
-- Last completed: 02-01-PLAN.md (Category Backend)
-- Next: 02-02-PLAN.md
+- Last completed: 02-02-PLAN.md (Category List UI)
+- Next: 02-03-PLAN.md
 
 ---
 
-_Last updated: 2026-02-28 after Plan 02-01 execution_
+_Last updated: 2026-02-28 after Plan 02-02 execution_
