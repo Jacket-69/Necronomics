@@ -21,19 +21,19 @@
 
 ### Transactions
 
-- [ ] **TXN-01**: User can create a transaction with amount, type (income/expense), account, category, date, and optional description.
-- [ ] **TXN-02**: User can edit an existing transaction.
-- [ ] **TXN-03**: User can delete an existing transaction after confirmation.
+- [x] **TXN-01**: User can create a transaction with amount, type (income/expense), account, category, date, and optional description.
+- [x] **TXN-02**: User can edit an existing transaction.
+- [x] **TXN-03**: User can delete an existing transaction after confirmation.
 - [ ] **TXN-04**: User sees the current date preselected when opening the new transaction form.
-- [ ] **TXN-05**: User can view transactions in a paginated table.
-- [ ] **TXN-06**: User can filter transactions by date range, type, category, account, and min/max amount.
-- [ ] **TXN-07**: User can search transactions by description text.
-- [ ] **TXN-08**: User can sort the transaction table by key columns.
+- [x] **TXN-05**: User can view transactions in a paginated table.
+- [x] **TXN-06**: User can filter transactions by date range, type, category, account, and min/max amount.
+- [x] **TXN-07**: User can search transactions by description text.
+- [x] **TXN-08**: User can sort the transaction table by key columns.
 
 ### Balances
 
-- [ ] **BAL-01**: User sees account balances update automatically and deterministically after transaction create, edit, and delete.
-- [ ] **BAL-02**: User can view a consolidated total in the configured base currency using stored exchange rates.
+- [x] **BAL-01**: User sees account balances update automatically and deterministically after transaction create, edit, and delete.
+- [x] **BAL-02**: User can view a consolidated total in the configured base currency using stored exchange rates.
 
 ### Debts
 
@@ -132,16 +132,16 @@
 | CATE-02 | Phase 2: Categories | Complete |
 | CATE-03 | Phase 2: Categories | Complete |
 | CATE-04 | Phase 2: Categories | Complete |
-| TXN-01 | Phase 3: Transactions and Balances | Pending |
-| TXN-02 | Phase 3: Transactions and Balances | Pending |
-| TXN-03 | Phase 3: Transactions and Balances | Pending |
+| TXN-01 | Phase 3: Transactions and Balances | Complete |
+| TXN-02 | Phase 3: Transactions and Balances | Complete |
+| TXN-03 | Phase 3: Transactions and Balances | Complete |
 | TXN-04 | Phase 3: Transactions and Balances | Pending |
-| TXN-05 | Phase 3: Transactions and Balances | Pending |
-| TXN-06 | Phase 3: Transactions and Balances | Pending |
-| TXN-07 | Phase 3: Transactions and Balances | Pending |
-| TXN-08 | Phase 3: Transactions and Balances | Pending |
-| BAL-01 | Phase 3: Transactions and Balances | Pending |
-| BAL-02 | Phase 3: Transactions and Balances | Pending |
+| TXN-05 | Phase 3: Transactions and Balances | Complete |
+| TXN-06 | Phase 3: Transactions and Balances | Complete |
+| TXN-07 | Phase 3: Transactions and Balances | Complete |
+| TXN-08 | Phase 3: Transactions and Balances | Complete |
+| BAL-01 | Phase 3: Transactions and Balances | Complete |
+| BAL-02 | Phase 3: Transactions and Balances | Complete |
 | DEBT-01 | Phase 4: Debts | Pending |
 | DEBT-02 | Phase 4: Debts | Pending |
 | DEBT-03 | Phase 4: Debts | Pending |

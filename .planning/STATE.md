@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-last_updated: "2026-02-28T01:45:16.884Z"
+status: in-progress
+last_updated: "2026-02-28T03:35:13Z"
 progress:
-  total_phases: 2
+  total_phases: 3
   completed_phases: 2
-  total_plans: 6
-  completed_plans: 6
+  total_plans: 9
+  completed_plans: 7
 ---
 
 # State: Necronomics Planning Memory
@@ -24,11 +24,11 @@ progress:
 
 ## Current Execution State
 
-- Active phase: Phase 2 - Categories (plan 3 of 3 complete — phase complete)
-- Plans completed: 01-01, 01-02, 01-03, 02-01, 02-02, 02-03 (6 total)
-- Current plan: Phase 2 complete, ready for Phase 3
+- Active phase: Phase 3 - Transactions and Balances (plan 1 of 3 complete)
+- Plans completed: 01-01, 01-02, 01-03, 02-01, 02-02, 02-03, 03-01 (7 total)
+- Current plan: 03-02 (next)
 - Total roadmap phases: 8
-- Requirement coverage status: 43/43 v1 requirements assigned; 8 completed (ACCT-01..04, CATE-01..04)
+- Requirement coverage status: 43/43 v1 requirements assigned; 17 completed (ACCT-01..04, CATE-01..04, TXN-01..03, TXN-05..08, BAL-01..02)
 
 ## Decisions
 
@@ -46,6 +46,10 @@ progress:
 - Parent dropdown disabled for categories with subcategories (cannot demote)
 - Delete modal shows 'Entendido' on backend error instead of delete buttons
 - window.confirm used for dirty-state discard prompt
+- Inline SQL in commands for atomic balance transactions (need &mut \*db_txn executor)
+- Balance recalculation via SUM-based UPDATE (always correct, no drift)
+- QueryBuilder apply_filters helper DRYs WHERE clause between count and list
+- Sort column whitelist prevents SQL injection in ORDER BY
 
 ## Memory
 
@@ -57,12 +61,16 @@ progress:
 - Lucide iconMap exported from CategoryRow for reuse in icon picker
 - CategoryFormModal uses react-hook-form Controller for custom IconPicker integration
 - Modal form pattern: overlay + centered box + dirty-state guard + form-level error
+- Transaction commands use pool.begin()/commit() for atomic balance recalculation
+- Dynamic SQL filtering uses QueryBuilder with push_bind (no string interpolation)
+- PaginatedResult<T> generic struct for paginated endpoints
+- transactionApi typed invoke wrappers with filter object pattern
 
 ## Session
 
-- Last completed: Phase 2 (Categories) — all 3 plans complete, verified
-- Next: Phase 3 (Transactions and Balances) — needs discussion and planning
+- Last completed: 03-01 (Transaction data layer) — 3 tasks, 3 min
+- Stopped at: Completed 03-01-PLAN.md
 
 ---
 
-_Last updated: 2026-02-28 after Phase 2 completion and transition_
+_Last updated: 2026-02-28 after 03-01 completion_
