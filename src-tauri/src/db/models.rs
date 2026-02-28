@@ -19,6 +19,22 @@ pub struct Account {
     pub created_at: String,
 }
 
+/// Represents a category entity from the `categories` table.
+#[derive(Debug, FromRow, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct Category {
+    pub id: String,
+    pub name: String,
+    /// Mapped from the `type` column (Rust keyword). Use sqlx rename + serde rename.
+    #[sqlx(rename = "type")]
+    #[serde(rename = "type")]
+    pub category_type: String,
+    pub icon: Option<String>,
+    pub parent_id: Option<String>,
+    pub is_active: i32,
+    pub created_at: String,
+}
+
 /// Represents a currency entity from the `currencies` table.
 #[derive(Debug, FromRow, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]

@@ -58,15 +58,18 @@ pub async fn run_migrations(pool: &SqlitePool) -> Result<(), Box<dyn std::error:
             "003_seed_categories",
             include_str!("migrations/003_seed_categories.sql"),
         ),
+        (
+            "004_migrate_category_icons",
+            include_str!("migrations/004_migrate_category_icons.sql"),
+        ),
     ];
 
     for (name, sql) in migrations {
         // Check if migration has already been applied
-        let applied: Option<(i64,)> =
-            sqlx::query_as("SELECT id FROM _migrations WHERE name = ?")
-                .bind(name)
-                .fetch_optional(pool)
-                .await?;
+        let applied: Option<(i64,)> = sqlx::query_as("SELECT id FROM _migrations WHERE name = ?")
+            .bind(name)
+            .fetch_optional(pool)
+            .await?;
 
         if applied.is_none() {
             // Execute migration SQL (may contain multiple statements)
