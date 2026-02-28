@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-02-28T03:35:13Z"
+last_updated: "2026-02-28T03:40:38Z"
 progress:
   total_phases: 3
   completed_phases: 2
   total_plans: 9
-  completed_plans: 7
+  completed_plans: 8
 ---
 
 # State: Necronomics Planning Memory
@@ -24,11 +24,11 @@ progress:
 
 ## Current Execution State
 
-- Active phase: Phase 3 - Transactions and Balances (plan 1 of 3 complete)
-- Plans completed: 01-01, 01-02, 01-03, 02-01, 02-02, 02-03, 03-01 (7 total)
-- Current plan: 03-02 (next)
+- Active phase: Phase 3 - Transactions and Balances (plan 2 of 3 complete)
+- Plans completed: 01-01, 01-02, 01-03, 02-01, 02-02, 02-03, 03-01, 03-02 (8 total)
+- Current plan: 03-03 (next)
 - Total roadmap phases: 8
-- Requirement coverage status: 43/43 v1 requirements assigned; 17 completed (ACCT-01..04, CATE-01..04, TXN-01..03, TXN-05..08, BAL-01..02)
+- Requirement coverage status: 43/43 v1 requirements assigned; 21 completed (ACCT-01..04, CATE-01..04, TXN-01..08, BAL-01..02)
 
 ## Decisions
 
@@ -50,6 +50,10 @@ progress:
 - Balance recalculation via SUM-based UPDATE (always correct, no drift)
 - QueryBuilder apply_filters helper DRYs WHERE clause between count and list
 - Sort column whitelist prevents SQL injection in ORDER BY
+- Transaction store refetches after CRUD (pagination totals need recalculation, not optimistic)
+- setFilters resets page to 1 on non-page filter changes (prevents empty-page bug)
+- Type toggle uses Controller-based segmented buttons (not native radio inputs)
+- Amount stored as string in form, converted to minor units on submit
 
 ## Memory
 
@@ -65,12 +69,15 @@ progress:
 - Dynamic SQL filtering uses QueryBuilder with push_bind (no string interpolation)
 - PaginatedResult<T> generic struct for paginated endpoints
 - transactionApi typed invoke wrappers with filter object pattern
+- Transaction store manages filter/pagination/sort state; store drives API queries
+- TransactionFormModal follows CategoryFormModal pattern: react-hook-form + zod + dirty guard
+- Segmented toggle button pattern: selected (#4a5d23/#7fff00), unselected (#111a0a/#6b7c3e)
 
 ## Session
 
-- Last completed: 03-01 (Transaction data layer) — 3 tasks, 3 min
-- Stopped at: Completed 03-01-PLAN.md
+- Last completed: 03-02 (Transaction store & CRUD modals) — 2 tasks, 3 min
+- Stopped at: Completed 03-02-PLAN.md
 
 ---
 
-_Last updated: 2026-02-28 after 03-01 completion_
+_Last updated: 2026-02-28 after 03-02 completion_

@@ -24,7 +24,7 @@
 - [x] **TXN-01**: User can create a transaction with amount, type (income/expense), account, category, date, and optional description.
 - [x] **TXN-02**: User can edit an existing transaction.
 - [x] **TXN-03**: User can delete an existing transaction after confirmation.
-- [ ] **TXN-04**: User sees the current date preselected when opening the new transaction form.
+- [x] **TXN-04**: User sees the current date preselected when opening the new transaction form.
 - [x] **TXN-05**: User can view transactions in a paginated table.
 - [x] **TXN-06**: User can filter transactions by date range, type, category, account, and min/max amount.
 - [x] **TXN-07**: User can search transactions by description text.
@@ -135,7 +135,7 @@
 | TXN-01 | Phase 3: Transactions and Balances | Complete |
 | TXN-02 | Phase 3: Transactions and Balances | Complete |
 | TXN-03 | Phase 3: Transactions and Balances | Complete |
-| TXN-04 | Phase 3: Transactions and Balances | Pending |
+| TXN-04 | Phase 3: Transactions and Balances | Complete |
 | TXN-05 | Phase 3: Transactions and Balances | Complete |
 | TXN-06 | Phase 3: Transactions and Balances | Complete |
 | TXN-07 | Phase 3: Transactions and Balances | Complete |
