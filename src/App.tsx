@@ -5,8 +5,10 @@ import { EditAccountPage } from "./pages/EditAccountPage";
 import { CategoriesPage } from "./pages/CategoriesPage";
 import { TransactionsPage } from "./pages/TransactionsPage";
 import { DebtsPage } from "./pages/DebtsPage";
+import { DashboardPage } from "./pages/DashboardPage";
 
 const navLinks = [
+  { to: "/dashboard", label: "Dashboard" },
   { to: "/accounts", label: "Cuentas" },
   { to: "/categories", label: "Categorias" },
   { to: "/transactions", label: "Transacciones" },
@@ -46,7 +48,8 @@ const App = () => {
       </nav>
 
       <Routes>
-        <Route path="/" element={<Navigate to="/accounts" replace />} />
+        <Route path="/" element={<Navigate to="/dashboard" replace />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/accounts" element={<AccountsPage />} />
         <Route path="/accounts/new" element={<NewAccountPage />} />
         <Route path="/accounts/:id/edit" element={<EditAccountPage />} />
