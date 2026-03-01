@@ -97,6 +97,13 @@ Plans:
 
 **Requirement IDs:** DASH-01, DASH-02, DASH-03, DASH-04
 
+**Plans:** 2 plans
+
+Plans:
+
+- [ ] 05-01-PLAN.md — Dashboard data layer: Rust models, SQL queries, Tauri command, TypeScript types, API wrapper
+- [ ] 05-02-PLAN.md — Dashboard UI: hero balance, income/expense panel, top categories panel, recent transactions panel, page routing
+
 **Observable success criteria:**
 
 - Main dashboard shows consolidated total balance.
