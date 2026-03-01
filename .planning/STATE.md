@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in_progress
-last_updated: "2026-03-01T03:39:19.000Z"
+last_updated: "2026-03-01T03:44:42.000Z"
 progress:
   total_phases: 5
-  completed_phases: 4
+  completed_phases: 5
   total_plans: 14
-  completed_plans: 13
+  completed_plans: 14
 ---
 
 # State: Necronomics Planning Memory
@@ -24,11 +24,11 @@ progress:
 
 ## Current Execution State
 
-- Active phase: Phase 5 - Dashboard (1 of 2 complete)
-- Plans completed: 01-01, 01-02, 01-03, 02-01, 02-02, 02-03, 03-01, 03-02, 03-03, 04-01, 04-02, 04-03, 05-01 (13 total)
-- Current plan: 05-02
+- Active phase: Phase 5 - Dashboard (2 of 2 complete)
+- Plans completed: 01-01, 01-02, 01-03, 02-01, 02-02, 02-03, 03-01, 03-02, 03-03, 04-01, 04-02, 04-03, 05-01, 05-02 (14 total)
+- Current plan: Phase 5 complete
 - Total roadmap phases: 8
-- Requirement coverage status: 43/43 v1 requirements assigned; 37 completed (ACCT-01..04, CATE-01..04, TXN-01..08, BAL-01..02, DEBT-01..07, DASH-01..04)
+- Requirement coverage status: 43/43 v1 requirements assigned; 41 completed (ACCT-01..04, CATE-01..04, TXN-01..08, BAL-01..02, DEBT-01..07, DASH-01..04)
 
 ## Decisions
 
@@ -70,6 +70,9 @@ progress:
 - Pre-fetch exchange rates into HashMap for reuse across dashboard calculations
 - RecentTransaction includes currency_code for per-account formatting
 - Category spending rolls up subcategories to parent before top-5 grouping
+- Dashboard panel props optional (accept undefined) for skeleton loading while data fetches
+- Dashboard grid layout: 25% income/expense, 25% categories, 50% transactions (grid-cols-4)
+- Date format in RecentTransactionsPanel uses string split for DD/MM display
 
 ## Memory
 
@@ -101,13 +104,16 @@ progress:
 - CreditUtilization and ProjectionTable are standalone components composed in DebtsPage
 - Dashboard data layer: single get_dashboard_data IPC returns all 4 metrics (balance, income/expense, categories, recent txns)
 - dashboardApi.getData() typed wrapper follows existing API pattern
+- Dashboard panel pattern: each panel handles loading/empty states internally with animate-pulse skeletons
+- DashboardPage follows same data-fetch pattern: useState + useCallback + useEffect
+- Dashboard is app home page: / redirects to /dashboard, Dashboard first nav item
 
 ## Session Continuity
 
 Last session: 2026-03-01
-Stopped at: Completed 05-01-PLAN.md
+Stopped at: Completed 05-02-PLAN.md
 Resume file: none
 
 ---
 
-_Last updated: 2026-03-01 after completing 05-01 dashboard data layer_
+_Last updated: 2026-03-01 after completing 05-02 dashboard UI_
