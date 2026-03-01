@@ -21,6 +21,7 @@ import type {
   DebtFilter,
   CreditUtilization,
   MonthlyProjection,
+  DashboardData,
 } from "../types";
 
 export const accountApi = {
@@ -92,11 +93,9 @@ export const transactionApi = {
 };
 
 export const debtApi = {
-  list: (filter: DebtFilter): Promise<Debt[]> =>
-    invoke("list_debts", { filter }),
+  list: (filter: DebtFilter): Promise<Debt[]> => invoke("list_debts", { filter }),
 
-  getDetail: (id: string): Promise<DebtWithInstallments> =>
-    invoke("get_debt_detail", { id }),
+  getDetail: (id: string): Promise<DebtWithInstallments> => invoke("get_debt_detail", { id }),
 
   create: (input: CreateDebtInput): Promise<DebtWithInstallments> =>
     invoke("create_debt", { input }),
@@ -106,15 +105,13 @@ export const debtApi = {
 
   delete: (id: string): Promise<void> => invoke("delete_debt", { id }),
 
-  markInstallmentPaid: (
-    installmentId: string,
-    categoryId: string,
-  ): Promise<Installment> =>
+  markInstallmentPaid: (installmentId: string, categoryId: string): Promise<Installment> =>
     invoke("mark_installment_paid", { installmentId, categoryId }),
 
-  getCreditUtilization: (): Promise<CreditUtilization[]> =>
-    invoke("get_credit_utilization"),
+  getCreditUtilization: (): Promise<CreditUtilization[]> => invoke("get_credit_utilization"),
+  getPaymentProjections: (): Promise<MonthlyProjection[]> => invoke("get_payment_projections"),
+};
 
-  getPaymentProjections: (): Promise<MonthlyProjection[]> =>
-    invoke("get_payment_projections"),
+export const dashboardApi = {
+  getData: (): Promise<DashboardData> => invoke("get_dashboard_data"),
 };

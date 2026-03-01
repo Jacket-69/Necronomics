@@ -211,3 +211,35 @@ export interface MonthlyProjection {
   debts: DebtProjectionEntry[];
   total: number;
 }
+
+export interface DashboardData {
+  balanceSummary: BalanceSummary;
+  monthlyIncomeExpense: MonthlyIncomeExpense;
+  topCategories: CategorySpending[];
+  recentTransactions: RecentTransaction[];
+}
+
+export interface MonthlyIncomeExpense {
+  income: number; // minor units in base currency
+  expense: number; // minor units in base currency
+  monthName: string; // Spanish month name (e.g., "Marzo")
+  year: number;
+}
+
+export interface CategorySpending {
+  categoryId: string;
+  categoryName: string;
+  amount: number; // minor units in base currency
+  percentage: number; // 0-100
+}
+
+export interface RecentTransaction {
+  id: string;
+  accountName: string;
+  categoryName: string;
+  amount: number; // minor units in original currency
+  transactionType: string; // "income" | "expense"
+  description: string;
+  date: string;
+  currencyCode: string; // for formatting
+}
