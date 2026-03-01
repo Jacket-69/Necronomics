@@ -7,9 +7,7 @@ use crate::db::queries::accounts;
 /// List all active accounts, ordered by type then name.
 #[tauri::command]
 pub async fn list_accounts(pool: State<'_, SqlitePool>) -> Result<Vec<Account>, String> {
-    accounts::get_all(&pool)
-        .await
-        .map_err(|e| e.to_string())
+    accounts::get_all(&pool).await.map_err(|e| e.to_string())
 }
 
 /// Get a single account by ID.
@@ -42,9 +40,17 @@ pub async fn create_account(
     }
 
     let id = uuid::Uuid::new_v4().to_string();
-    accounts::create(&pool, &id, &name, &account_type, &currency_id, credit_limit, billing_day)
-        .await
-        .map_err(|e| e.to_string())
+    accounts::create(
+        &pool,
+        &id,
+        &name,
+        &account_type,
+        &currency_id,
+        credit_limit,
+        billing_day,
+    )
+    .await
+    .map_err(|e| e.to_string())
 }
 
 /// Update an existing account. Type is locked after creation.
@@ -104,9 +110,7 @@ pub async fn delete_account(pool: State<'_, SqlitePool>, id: String) -> Result<(
         .map_err(|e| e.to_string())?;
 
     if has_txns {
-        return Err(
-            "No se puede eliminar una cuenta con transacciones. Use archivar.".into(),
-        );
+        return Err("No se puede eliminar una cuenta con transacciones. Use archivar.".into());
     }
 
     accounts::delete(&pool, &id)

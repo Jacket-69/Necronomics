@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-last_updated: "2026-02-28T03:52:35.019Z"
+status: in_progress
+last_updated: "2026-02-28T12:00:00.000Z"
 progress:
-  total_phases: 3
-  completed_phases: 3
-  total_plans: 9
-  completed_plans: 9
+  total_phases: 4
+  completed_phases: 4
+  total_plans: 12
+  completed_plans: 12
 ---
 
 # State: Necronomics Planning Memory
@@ -24,11 +24,11 @@ progress:
 
 ## Current Execution State
 
-- Active phase: Phase 3 - Transactions and Balances (3 of 3 complete — PHASE COMPLETE)
-- Plans completed: 01-01, 01-02, 01-03, 02-01, 02-02, 02-03, 03-01, 03-02, 03-03 (9 total)
-- Current plan: Phase 3 complete, ready for Phase 4
+- Active phase: Phase 4 - Debts (3 of 3 complete — PHASE COMPLETE)
+- Plans completed: 01-01, 01-02, 01-03, 02-01, 02-02, 02-03, 03-01, 03-02, 03-03, 04-01, 04-02, 04-03 (12 total)
+- Current plan: Phase 4 complete, ready for Phase 5
 - Total roadmap phases: 8
-- Requirement coverage status: 43/43 v1 requirements assigned; 26 completed (ACCT-01..04, CATE-01..04, TXN-01..08, BAL-01..02)
+- Requirement coverage status: 43/43 v1 requirements assigned; 33 completed (ACCT-01..04, CATE-01..04, TXN-01..08, BAL-01..02, DEBT-01..07)
 
 ## Decisions
 
@@ -54,10 +54,19 @@ progress:
 - setFilters resets page to 1 on non-page filter changes (prevents empty-page bug)
 - Type toggle uses Controller-based segmented buttons (not native radio inputs)
 - Amount stored as string in form, converted to minor units on submit
-- NavLink navigation bar added to App.tsx for all pages (Cuentas, Categorias, Transacciones)
+- NavLink navigation bar added to App.tsx for all pages (Cuentas, Categorias, Transacciones, Deudas)
 - Amount filter uses human-readable values, converted to CLP minor units in page layer
 - Balance flash animation with CSS @keyframes and ref-based previous value tracking
 - TransactionTable receives currencies prop for per-account currency code resolution
+- paid_installments computed via SQL subquery (never stale)
+- Overdue installment status derived at read time from due_date < today
+- create_debt atomically generates all installment rows with billing-day-aware due dates
+- mark_installment_paid atomically creates expense transaction + updates installment + recalculates balance
+- Debt store is non-paginated (debts are typically small lists)
+- Edit mode only allows description, interestRate, notes editing (structural fields locked)
+- Single expanded debt card at a time (accordion pattern)
+- Credit utilization color coding: green <60%, orange 60-80%, red >80%
+- 6-month payment projection table with dynamic columns per active debt
 
 ## Memory
 
@@ -82,13 +91,18 @@ progress:
 - BalanceSummary: per-account balances + consolidated total, flash animation on changes
 - TransactionsPage follows CategoriesPage pattern: modal state, toast, fetchOnMount
 - URL query param ?account=:id pre-applies account filter on TransactionsPage mount
+- Debt CRUD follows transaction pattern: queries module + commands module + TS types + invoke wrappers
+- debtStore follows non-paginated pattern with filter state (accountId, isActive, search)
+- MarkPaidModal requires expense category selection (hierarchical category display)
+- Accordion UI pattern: single expanded item, click toggles expand/collapse
+- CreditUtilization and ProjectionTable are standalone components composed in DebtsPage
 
 ## Session Continuity
 
 Last session: 2026-02-28
-Stopped at: Phase 4 context gathered
-Resume file: .planning/phases/04-debts/04-CONTEXT.md
+Stopped at: Session resumed, reviewed completed work (Phases 1-4)
+Resume file: none (Phase 4 complete, ready for Phase 5)
 
 ---
 
-_Last updated: 2026-02-28 after Phase 4 context gathering_
+_Last updated: 2026-02-28 after session resume and state correction_

@@ -62,6 +62,10 @@ pub async fn run_migrations(pool: &SqlitePool) -> Result<(), Box<dyn std::error:
             "004_migrate_category_icons",
             include_str!("migrations/004_migrate_category_icons.sql"),
         ),
+        (
+            "005_create_installments",
+            include_str!("migrations/005_create_installments.sql"),
+        ),
     ];
 
     for (name, sql) in migrations {

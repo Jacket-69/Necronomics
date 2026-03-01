@@ -32,25 +32,40 @@ export const DebtCard = ({
   const fontNum = '"JetBrains Mono", monospace';
 
   const progressPercent =
-    debt.totalInstallments > 0
-      ? (debt.paidInstallments / debt.totalInstallments) * 100
-      : 0;
+    debt.totalInstallments > 0 ? (debt.paidInstallments / debt.totalInstallments) * 100 : 0;
 
-  const remainingAmount =
-    (debt.totalInstallments - debt.paidInstallments) * debt.monthlyPayment;
+  const remainingAmount = (debt.totalInstallments - debt.paidInstallments) * debt.monthlyPayment;
 
   const computeNextDueDate = (): string | null => {
-    // Simple approximation: startDate + paidInstallments months
-    // The real next due date comes from DebtDetail, but for collapsed view we approximate
     if (debt.paidInstallments >= debt.totalInstallments) return null;
-    return null; // Will show "Ver detalle" instead of approximate
+    // Approximate next due: startDate + paidInstallments months
+    const [year, month, day] = debt.startDate.split("-").map(Number);
+    const nextMonth = month + debt.paidInstallments;
+    const nextYear = year + Math.floor((nextMonth - 1) / 12);
+    const nextMo = ((nextMonth - 1) % 12) + 1;
+    // Clamp day to valid range for the target month
+    const maxDay = new Date(nextYear, nextMo, 0).getDate();
+    const clampedDay = Math.min(day, maxDay);
+    const mm = String(nextMo).padStart(2, "0");
+    const dd = String(clampedDay).padStart(2, "0");
+    return `${nextYear}-${mm}-${dd}`;
   };
 
   const formatDate = (dateStr: string): string => {
     const [year, month, day] = dateStr.split("-");
     const months = [
-      "Ene", "Feb", "Mar", "Abr", "May", "Jun",
-      "Jul", "Ago", "Sep", "Oct", "Nov", "Dic",
+      "Ene",
+      "Feb",
+      "Mar",
+      "Abr",
+      "May",
+      "Jun",
+      "Jul",
+      "Ago",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dic",
     ];
     const monthIdx = parseInt(month, 10) - 1;
     return `${parseInt(day, 10)} ${months[monthIdx]} ${year}`;
@@ -82,10 +97,7 @@ export const DebtCard = ({
       >
         {/* Left: description + account */}
         <div className="flex-1 min-w-0">
-          <p
-            className="text-sm font-semibold truncate"
-            style={{ color: "#c4d4a0" }}
-          >
+          <p className="text-sm font-semibold truncate" style={{ color: "#c4d4a0" }}>
             {debt.description}
           </p>
           <p className="text-xs" style={{ color: "#6b7c3e" }}>
@@ -117,10 +129,7 @@ export const DebtCard = ({
 
         {/* Right: amounts */}
         <div className="text-right shrink-0">
-          <p
-            className="text-sm font-bold"
-            style={{ color: "#c4d4a0", fontFamily: fontNum }}
-          >
+          <p className="text-sm font-bold" style={{ color: "#c4d4a0", fontFamily: fontNum }}>
             {formatCurrency(remainingAmount, currencyCode)}
           </p>
           <p className="text-xs" style={{ color: "#6b7c3e" }}>

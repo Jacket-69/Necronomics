@@ -121,10 +121,9 @@ pub async fn delete(pool: &SqlitePool, id: &str) -> Result<(), sqlx::Error> {
 
 /// Check if an account has any linked transactions.
 pub async fn has_transactions(pool: &SqlitePool, account_id: &str) -> Result<bool, sqlx::Error> {
-    let count: (i64,) =
-        sqlx::query_as("SELECT COUNT(*) FROM transactions WHERE account_id = ?")
-            .bind(account_id)
-            .fetch_one(pool)
-            .await?;
+    let count: (i64,) = sqlx::query_as("SELECT COUNT(*) FROM transactions WHERE account_id = ?")
+        .bind(account_id)
+        .fetch_one(pool)
+        .await?;
     Ok(count.0 > 0)
 }

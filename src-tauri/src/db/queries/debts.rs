@@ -18,10 +18,7 @@ pub async fn get_debt_by_id(pool: &SqlitePool, id: &str) -> Result<Option<Debt>,
 }
 
 /// List debts with dynamic filtering and computed paid_installments.
-pub async fn list_debts(
-    pool: &SqlitePool,
-    filter: &DebtFilter,
-) -> Result<Vec<Debt>, sqlx::Error> {
+pub async fn list_debts(pool: &SqlitePool, filter: &DebtFilter) -> Result<Vec<Debt>, sqlx::Error> {
     let mut builder: QueryBuilder<Sqlite> = QueryBuilder::new(
         "SELECT d.id, d.account_id, d.description, d.original_amount, d.total_installments,
                 (SELECT COUNT(*) FROM installments WHERE debt_id = d.id AND status = 'paid') as paid_installments,
