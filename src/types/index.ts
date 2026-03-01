@@ -128,3 +128,86 @@ export interface BalanceSummary {
   consolidatedTotal: number | null;
   baseCurrencyCode: string;
 }
+
+export interface Debt {
+  id: string;
+  accountId: string;
+  description: string;
+  originalAmount: number;
+  totalInstallments: number;
+  paidInstallments: number;
+  monthlyPayment: number;
+  interestRate: number;
+  startDate: string;
+  isActive: number;
+  notes: string | null;
+  createdAt: string;
+}
+
+export type InstallmentStatus = "pending" | "paid";
+export type InstallmentDisplayStatus = "pagado" | "pendiente" | "vencido";
+
+export interface Installment {
+  id: string;
+  debtId: string;
+  installmentNumber: number;
+  dueDate: string;
+  amount: number;
+  status: InstallmentStatus;
+  actualPaymentDate: string | null;
+  transactionId: string | null;
+  createdAt: string;
+}
+
+export interface DebtWithInstallments {
+  debt: Debt;
+  installments: Installment[];
+  accountName: string;
+  nextDueDate: string | null;
+  remainingAmount: number;
+}
+
+export interface CreateDebtInput {
+  accountId: string;
+  description: string;
+  originalAmount: number;
+  totalInstallments: number;
+  monthlyPayment: number;
+  interestRate: number;
+  startDate: string;
+  notes?: string;
+}
+
+export interface UpdateDebtInput {
+  description?: string;
+  interestRate?: number;
+  isActive?: boolean;
+  notes?: string;
+}
+
+export interface DebtFilter {
+  accountId?: string | null;
+  isActive?: boolean | null;
+  search?: string | null;
+}
+
+export interface CreditUtilization {
+  accountId: string;
+  accountName: string;
+  creditLimit: number;
+  currentBalance: number;
+  remainingDebtCommitments: number;
+  availableCredit: number;
+}
+
+export interface DebtProjectionEntry {
+  debtId: string;
+  debtDescription: string;
+  amount: number;
+}
+
+export interface MonthlyProjection {
+  month: string;
+  debts: DebtProjectionEntry[];
+  total: number;
+}

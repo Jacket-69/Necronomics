@@ -43,6 +43,14 @@ pub fn run() {
             commands::transactions::delete_transaction,
             commands::transactions::list_transactions,
             commands::transactions::get_balance_summary,
+            commands::debts::create_debt,
+            commands::debts::update_debt,
+            commands::debts::delete_debt,
+            commands::debts::list_debts,
+            commands::debts::get_debt_detail,
+            commands::debts::mark_installment_paid,
+            commands::debts::get_credit_utilization,
+            commands::debts::get_payment_projections,
         ])
         .setup(|app| {
             let handle = app.handle().clone();

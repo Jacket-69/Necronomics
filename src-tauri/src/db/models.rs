@@ -115,3 +115,110 @@ pub struct BalanceSummary {
     pub consolidated_total: Option<i64>,
     pub base_currency_code: String,
 }
+
+/// Represents a debt entity from the `debts` table.
+#[derive(Debug, FromRow, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct Debt {
+    pub id: String,
+    pub account_id: String,
+    pub description: String,
+    pub original_amount: i64,
+    pub total_installments: i32,
+    pub paid_installments: i32,
+    pub monthly_payment: i64,
+    pub interest_rate: f64,
+    pub start_date: String,
+    pub is_active: i32,
+    pub notes: Option<String>,
+    pub created_at: String,
+}
+
+/// Represents an installment entity from the `installments` table.
+#[derive(Debug, FromRow, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct Installment {
+    pub id: String,
+    pub debt_id: String,
+    pub installment_number: i32,
+    pub due_date: String,
+    pub amount: i64,
+    pub status: String,
+    pub actual_payment_date: Option<String>,
+    pub transaction_id: Option<String>,
+    pub created_at: String,
+}
+
+/// Filter parameters for listing debts.
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct DebtFilter {
+    pub account_id: Option<String>,
+    pub is_active: Option<bool>,
+    pub search: Option<String>,
+}
+
+/// Debt with full installment detail for the expanded card view.
+#[derive(Debug, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct DebtWithInstallments {
+    pub debt: Debt,
+    pub installments: Vec<Installment>,
+    pub account_name: String,
+    pub next_due_date: Option<String>,
+    pub remaining_amount: i64,
+}
+
+/// Credit utilization for a credit-card account.
+#[derive(Debug, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct CreditUtilization {
+    pub account_id: String,
+    pub account_name: String,
+    pub credit_limit: i64,
+    pub current_balance: i64,
+    pub remaining_debt_commitments: i64,
+    pub available_credit: i64,
+}
+
+/// A single debt's contribution to a monthly projection.
+#[derive(Debug, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct DebtProjectionEntry {
+    pub debt_id: String,
+    pub debt_description: String,
+    pub amount: i64,
+}
+
+/// Monthly projection row with per-debt amounts and total.
+#[derive(Debug, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct MonthlyProjection {
+    pub month: String,
+    pub debts: Vec<DebtProjectionEntry>,
+    pub total: i64,
+}
+
+/// Input for creating a new debt.
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct CreateDebtInput {
+    pub account_id: String,
+    pub description: String,
+    pub original_amount: i64,
+    pub total_installments: i32,
+    pub monthly_payment: i64,
+    pub interest_rate: f64,
+    pub start_date: String,
+    pub notes: Option<String>,
+}
+
+/// Input for updating an existing debt (only metadata fields).
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct UpdateDebtInput {
+    pub description: Option<String>,
+    pub interest_rate: Option<f64>,
+    pub is_active: Option<bool>,
+    pub notes: Option<String>,
+}

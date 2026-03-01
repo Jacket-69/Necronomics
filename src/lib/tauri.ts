@@ -13,6 +13,14 @@ import type {
   TransactionFilters,
   PaginatedResult,
   BalanceSummary,
+  Debt,
+  Installment,
+  DebtWithInstallments,
+  CreateDebtInput,
+  UpdateDebtInput,
+  DebtFilter,
+  CreditUtilization,
+  MonthlyProjection,
 } from "../types";
 
 export const accountApi = {
@@ -81,4 +89,32 @@ export const transactionApi = {
 
   getBalanceSummary: (baseCurrencyId?: string): Promise<BalanceSummary> =>
     invoke("get_balance_summary", { baseCurrencyId: baseCurrencyId ?? null }),
+};
+
+export const debtApi = {
+  list: (filter: DebtFilter): Promise<Debt[]> =>
+    invoke("list_debts", { filter }),
+
+  getDetail: (id: string): Promise<DebtWithInstallments> =>
+    invoke("get_debt_detail", { id }),
+
+  create: (input: CreateDebtInput): Promise<DebtWithInstallments> =>
+    invoke("create_debt", { input }),
+
+  update: (id: string, input: UpdateDebtInput): Promise<Debt> =>
+    invoke("update_debt", { id, input }),
+
+  delete: (id: string): Promise<void> => invoke("delete_debt", { id }),
+
+  markInstallmentPaid: (
+    installmentId: string,
+    categoryId: string,
+  ): Promise<Installment> =>
+    invoke("mark_installment_paid", { installmentId, categoryId }),
+
+  getCreditUtilization: (): Promise<CreditUtilization[]> =>
+    invoke("get_credit_utilization"),
+
+  getPaymentProjections: (): Promise<MonthlyProjection[]> =>
+    invoke("get_payment_projections"),
 };
