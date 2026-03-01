@@ -3,18 +3,18 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in_progress
-last_updated: "2026-02-28T12:00:00.000Z"
+last_updated: "2026-03-01T03:39:19.000Z"
 progress:
-  total_phases: 4
+  total_phases: 5
   completed_phases: 4
-  total_plans: 12
-  completed_plans: 12
+  total_plans: 14
+  completed_plans: 13
 ---
 
 # State: Necronomics Planning Memory
 
 **Initialized:** 2026-02-27
-**Last updated:** 2026-02-28
+**Last updated:** 2026-03-01
 
 ## Context Pointers
 
@@ -24,11 +24,11 @@ progress:
 
 ## Current Execution State
 
-- Active phase: Phase 4 - Debts (3 of 3 complete — PHASE COMPLETE)
-- Plans completed: 01-01, 01-02, 01-03, 02-01, 02-02, 02-03, 03-01, 03-02, 03-03, 04-01, 04-02, 04-03 (12 total)
-- Current plan: Phase 4 complete, ready for Phase 5
+- Active phase: Phase 5 - Dashboard (1 of 2 complete)
+- Plans completed: 01-01, 01-02, 01-03, 02-01, 02-02, 02-03, 03-01, 03-02, 03-03, 04-01, 04-02, 04-03, 05-01 (13 total)
+- Current plan: 05-02
 - Total roadmap phases: 8
-- Requirement coverage status: 43/43 v1 requirements assigned; 33 completed (ACCT-01..04, CATE-01..04, TXN-01..08, BAL-01..02, DEBT-01..07)
+- Requirement coverage status: 43/43 v1 requirements assigned; 37 completed (ACCT-01..04, CATE-01..04, TXN-01..08, BAL-01..02, DEBT-01..07, DASH-01..04)
 
 ## Decisions
 
@@ -67,6 +67,9 @@ progress:
 - Single expanded debt card at a time (accordion pattern)
 - Credit utilization color coding: green <60%, orange 60-80%, red >80%
 - 6-month payment projection table with dynamic columns per active debt
+- Pre-fetch exchange rates into HashMap for reuse across dashboard calculations
+- RecentTransaction includes currency_code for per-account formatting
+- Category spending rolls up subcategories to parent before top-5 grouping
 
 ## Memory
 
@@ -96,13 +99,15 @@ progress:
 - MarkPaidModal requires expense category selection (hierarchical category display)
 - Accordion UI pattern: single expanded item, click toggles expand/collapse
 - CreditUtilization and ProjectionTable are standalone components composed in DebtsPage
+- Dashboard data layer: single get_dashboard_data IPC returns all 4 metrics (balance, income/expense, categories, recent txns)
+- dashboardApi.getData() typed wrapper follows existing API pattern
 
 ## Session Continuity
 
-Last session: 2026-02-28
-Stopped at: Session resumed, reviewed completed work (Phases 1-4)
-Resume file: none (Phase 4 complete, ready for Phase 5)
+Last session: 2026-03-01
+Stopped at: Completed 05-01-PLAN.md
+Resume file: none
 
 ---
 
-_Last updated: 2026-02-28 after session resume and state correction_
+_Last updated: 2026-03-01 after completing 05-01 dashboard data layer_

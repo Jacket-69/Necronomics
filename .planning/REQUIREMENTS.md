@@ -47,10 +47,10 @@
 
 ### Dashboard
 
-- [ ] **DASH-01**: User sees consolidated total balance on the main dashboard.
-- [ ] **DASH-02**: User sees current-month income versus expense on the main dashboard.
-- [ ] **DASH-03**: User sees top spending categories for the current month on the main dashboard.
-- [ ] **DASH-04**: User sees a recent-transactions panel on the main dashboard.
+- [x] **DASH-01**: User sees consolidated total balance on the main dashboard.
+- [x] **DASH-02**: User sees current-month income versus expense on the main dashboard.
+- [x] **DASH-03**: User sees top spending categories for the current month on the main dashboard.
+- [x] **DASH-04**: User sees a recent-transactions panel on the main dashboard.
 
 ### Currency and Settings
 
@@ -149,10 +149,10 @@
 | DEBT-05 | Phase 4: Debts | Pending |
 | DEBT-06 | Phase 4: Debts | Pending |
 | DEBT-07 | Phase 4: Debts | Pending |
-| DASH-01 | Phase 5: Dashboard | Pending |
-| DASH-02 | Phase 5: Dashboard | Pending |
-| DASH-03 | Phase 5: Dashboard | Pending |
-| DASH-04 | Phase 5: Dashboard | Pending |
+| DASH-01 | Phase 5: Dashboard | Complete |
+| DASH-02 | Phase 5: Dashboard | Complete |
+| DASH-03 | Phase 5: Dashboard | Complete |
+| DASH-04 | Phase 5: Dashboard | Complete |
 | CURR-01 | Phase 6: Currency and Settings | Pending |
 | CURR-02 | Phase 6: Currency and Settings | Pending |
 | CURR-03 | Phase 6: Currency and Settings | Pending |
