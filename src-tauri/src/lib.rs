@@ -51,6 +51,7 @@ pub fn run() {
             commands::debts::mark_installment_paid,
             commands::debts::get_credit_utilization,
             commands::debts::get_payment_projections,
+            commands::dashboard::get_dashboard_data,
         ])
         .setup(|app| {
             let handle = app.handle().clone();

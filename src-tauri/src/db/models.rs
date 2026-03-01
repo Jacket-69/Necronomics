@@ -222,3 +222,47 @@ pub struct UpdateDebtInput {
     pub is_active: Option<bool>,
     pub notes: Option<String>,
 }
+
+/// Dashboard aggregate data returned by the get_dashboard_data command.
+#[derive(Debug, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct DashboardData {
+    pub balance_summary: BalanceSummary,
+    pub monthly_income_expense: MonthlyIncomeExpense,
+    pub top_categories: Vec<CategorySpending>,
+    pub recent_transactions: Vec<RecentTransaction>,
+}
+
+/// Income and expense totals for the current month, converted to base currency.
+#[derive(Debug, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct MonthlyIncomeExpense {
+    pub income: i64,
+    pub expense: i64,
+    pub month_name: String,
+    pub year: i32,
+}
+
+/// A category's spending amount and proportion of total spending for the month.
+#[derive(Debug, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct CategorySpending {
+    pub category_id: String,
+    pub category_name: String,
+    pub amount: i64,
+    pub percentage: f64,
+}
+
+/// A recent transaction with joined account and category names for display.
+#[derive(Debug, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct RecentTransaction {
+    pub id: String,
+    pub account_name: String,
+    pub category_name: String,
+    pub amount: i64,
+    pub transaction_type: String,
+    pub description: String,
+    pub date: String,
+    pub currency_code: String,
+}
